@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.carosels {
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    /* use this property to hide the scrollbar on firefox */
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+}
+
+.carousels::-webkit-scrollbar {
+    display: none;
+}
+
+.carosel {
+    scroll-snap-align: center;
+}
