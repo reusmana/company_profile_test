@@ -11,5 +11,6 @@
     </div>
 </section>
 @include('components.ourservice')
+@include('components.ourpages')
 @include('components.footer')
 @endsection

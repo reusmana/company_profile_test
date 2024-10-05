@@ -1,4 +1,4 @@
-<header class="flex w-full h-20 items-center justify-between px-8">
+<header class="flex w-full h-20 items-center justify-between px-8 sticky top-0 bg-white z-[999999]">
     <div class="flex items-center gap-6">
         <span class="h-10 min-w-10 w-10 rounded-full bg-blue-500 flex items-center justify-center">
             <h2 class="text-xl font-bold text-white">GG</h2>
@@ -7,6 +7,13 @@
             Gommu Group
         </h1>
     </div>
+    @php
+            $user = Auth::user();
+        @endphp
+        @php
+            $isLogin = Auth::check();
+
+        @endphp
     <div class="flex gap-10">
         <ul class="lg:flex items-center gap-6 text-slate-700 font-semibold  hidden">
             <li>
@@ -14,6 +21,13 @@
                     About Company
                 </a>
             </li>
+            @if ($isLogin)
+            <li>
+                <a href="{{ route('dashboard') }}" class=" cursor-pointer ">
+                    Dashboard
+                </a>
+            </li>
+            @endif
         </ul>
         <button class="h-10 w-10 hamburger">
             <x-heroicon-c-bars-3-bottom-right />
@@ -27,19 +41,19 @@
                 About Company
             </a>
         </li>
-        @php
-            $user = Auth::user();
-        @endphp
-        @php
-            $isLogin = Auth::check();
-
-        @endphp
+        
        @if ($isLogin)
+       <li>
+        <a href="{{ route('dashboard') }}" class=" cursor-pointer text-xl lg:text-4xl font-semibold text-white">
+            Dashboard
+        </a>
+    </li>
        <li>
             <a href="{{ route('logout') }}" class=" cursor-pointer text-xl lg:text-4xl font-semibold text-white">
                 Logout
             </a>
         </li>
+       
        @else
        <li>
         <a href="{{ route('login') }}" class=" cursor-pointer text-xl lg:text-4xl font-semibold text-white">
